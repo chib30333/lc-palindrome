@@ -21,9 +21,24 @@ public:
             if(right != left) return false;
 
             x = (x - left * std::floor(std::pow(10, deep - 1))) / 10;
+
+            if(x == 0) return true;
+            int real_deep = std::floor(std::log10(x)) + 1;
             deep -= 2;
 
-            rotate++;
+            if(real_deep != deep) {
+                int reduce = deep - real_deep;
+                int reduced_size = std::pow(10, reduce);
+
+                if(x % reduced_size) return false;
+                else {
+                    x = std::floor(x / reduced_size);
+                    deep -= 2 * reduce;
+                    rotate = 0;
+                }
+            } else {
+                rotate++;
+            }
         }
 
         return true;
