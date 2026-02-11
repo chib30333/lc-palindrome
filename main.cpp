@@ -1,4 +1,3 @@
-#include <vector>
 #include <iostream>
 #include <cmath>
 
@@ -8,7 +7,6 @@ public:
         if (x < 0) return false;
         else if (x == 0) return true;
         
-        std::vector<int> array;
         int deep = std::floor(std::log10(x)) + 1;
         int rotate = 0;
 
